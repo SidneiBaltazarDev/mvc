@@ -11,8 +11,8 @@ class UsuariosController extends Controller {
     }
 
     public function addAction() {
-        $name = filter_input(INPUT_POST, 'name');
-        $email = filter_input(INPUT_POST, 'email');
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
         if($name && $email){
             $data = Usuario::select()->where('email', $email)->execute();
@@ -30,4 +30,14 @@ class UsuariosController extends Controller {
         echo 'deu ruim';
         
     }
+
+    public function edit() {
+        echo 'edit';
+    }
+
+    public function del() {
+        echo 'del';
+    }
+
+
 }
